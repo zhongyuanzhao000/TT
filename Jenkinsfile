@@ -1,14 +1,14 @@
 pipeline {
     agent any
     tools {
-	    jdk 'jdk8'
+      jdk 'jdk8'
       maven 'maven-3.6.1'        
     }
     stages {
       stage('Checkout') {
         steps {
-	        checkout scm
-	      }
+	  checkout scm
+	}
       }
       stage('Clone') {
         steps {
