@@ -31,6 +31,7 @@ git clone https://github.com/FudanSELab/train-ticket.git
 cd train-ticket/
 ```
 
+
 #### 2. Start the Application
 ```bash
 docker-compose -f deployment/quickstart-docker-compose/quickstart-docker-compose.yml up
