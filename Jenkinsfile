@@ -25,6 +25,7 @@ pipeline {
           echo "Test..."
           sh 'mvn test'
           echo "Test Successful"
+	  sh 'mvn test'
         }
       }
     }
