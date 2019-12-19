@@ -10,13 +10,6 @@ pipeline {
 	  checkout scm
 	}
       }
-      stage('Clone') {
-        steps {
-          echo "Clone..."
-          git url: "https://github.com/zhongyuanzhao000/jx-spring.git"
-          echo "Clone Successful"
-        }
-      }
       stage('Build') {
         steps {
           echo "Build..."
