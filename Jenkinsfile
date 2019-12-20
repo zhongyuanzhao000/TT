@@ -12,8 +12,10 @@ pipeline {
           echo "Package Successful"
 	  sh 'pwd'
 	  sh 'source /etc/profile'
-	  sh 'sudo docker login -u codewisdom -p "$DOCKERHUB_PWD"'
-	  sh 'sudo docker push codewisdom/codewisdom/hello-world:latest'
+	  withCredentials([usernamePassword(credentialsId: 'dockerHub-codewisdom', passwordVariable: 'dockerHubPassword', usernameVariable: 'dockerHubUser')]) {
+	    sh "sudo docker login -u ${dockerHubUser} -p ${dockerHubPassword}"
+	    sh "sudo docker push codewisdom/hello-world:latest"
+	  }
         }
       }
       stage('Test') {
