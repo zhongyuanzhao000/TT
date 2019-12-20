@@ -18,6 +18,8 @@ pipeline {
           echo "Build..."
           sh 'mvn clean package -DskipTests'
           echo "Package Successful"
+	  sh 'docker login -u codewisdom -p $DOCKERHUB_PWD'
+	  sh 'docker push codewisdom/codewisdom/hello-world:latest'
         }
       }
       stage('Test') {
