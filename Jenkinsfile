@@ -15,6 +15,7 @@ pipeline {
 	    sh "sudo docker push codewisdom/hello-world:latest"
 	  }
 	  echo "Push Successful"
+	  sh '/bin/bash ./clean.sh'
         }
       }
       stage('Test') {
