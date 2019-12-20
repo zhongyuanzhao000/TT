@@ -11,7 +11,7 @@ pipeline {
           sh 'mvn clean package -DskipTests'
           echo "Package Successful"
 		
-	  sh 'docker-compose build'
+	  sh 'sudo /usr/local/bin/docker-compose build'
 		
 	  withCredentials([usernamePassword(credentialsId: 'dockerHub-codewisdom', passwordVariable: 'dockerHubPassword', usernameVariable: 'dockerHubUser')]) {
 	    sh "sudo docker login -u ${dockerHubUser} -p ${dockerHubPassword}"
