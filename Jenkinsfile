@@ -1,18 +1,10 @@
 pipeline {
     agent any
-    options {
-        timeout(time: 3, unit: 'HOURS')
-    }
     tools {
       jdk 'jdk8'
       maven 'maven-3.6.1'        
     }
     stages {
-      stage('Checkout') {
-        steps {
-	  checkout scm
-	}
-      }
       stage('Build') {
         steps {
           echo "Build..."
@@ -20,7 +12,7 @@ pipeline {
           echo "Package Successful"
 	  sh 'pwd'
 	  sh 'source /etc/profile'
-	  sh 'docker login -u codewisdom -p $DOCKERHUB_PWD'
+		sh 'docker login -u codewisdom -p "${DOCKERHUB_PWD}"'
 	  sh 'docker push codewisdom/codewisdom/hello-world:latest'
         }
       }
