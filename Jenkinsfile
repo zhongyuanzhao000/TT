@@ -10,12 +10,11 @@ pipeline {
           echo "Build..."
           sh 'mvn clean package -DskipTests'
           echo "Package Successful"
-	  sh 'pwd'
-	  sh 'source /etc/profile'
 	  withCredentials([usernamePassword(credentialsId: 'dockerHub-codewisdom', passwordVariable: 'dockerHubPassword', usernameVariable: 'dockerHubUser')]) {
 	    sh "sudo docker login -u ${dockerHubUser} -p ${dockerHubPassword}"
 	    sh "sudo docker push codewisdom/hello-world:latest"
 	  }
+	  echo "Push Successful"
         }
       }
       stage('Test') {
