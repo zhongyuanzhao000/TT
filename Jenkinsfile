@@ -13,11 +13,20 @@ pipeline {
 		
 	  sh 'sudo /usr/local/bin/docker-compose build'
 		
-	  withCredentials([usernamePassword(credentialsId: 'dockerHub-codewisdom', passwordVariable: 'dockerHubPassword', usernameVariable: 'dockerHubUser')]) {
-	    sh "sudo docker login -u ${dockerHubUser} -p ${dockerHubPassword}"
-	    sh "sudo /bin/bash ./image-tag-push.sh"
+          script {
+            def currentBranch =  env.BRANCH_NAME
+	    if (currentBranch == 'master') {
+	      echo "This is master branch. Skip push step."
+	    
+	    } else {
+	      withCredentials([usernamePassword(credentialsId: 'dockerHub-codewisdom', passwordVariable: 'dockerHubPassword', usernameVariable: 'dockerHubUser')]) {
+	        sh "sudo docker login -u ${dockerHubUser} -p ${dockerHubPassword}"
+	        sh "sudo /bin/bash ./image-tag-push.sh"
+	      }
+	      echo "Push Successful"
+	    }
+	  
 	  }
-	  echo "Push Successful"
 		
 	  sh 'sudo /bin/bash ./clean.sh'
         }
