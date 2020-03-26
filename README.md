@@ -3,7 +3,7 @@
 The project is a train ticket booking system based on microservice architecture which contains 41 microservices. The programming languages and frameworks it used are as below.
 - Java - Spring Boot, Spring Cloud
 - Node.js - Express
-- Python - Django
+- Python - Django  
 - Go - Webgo
 - DB - Mongo、MySQL
 
