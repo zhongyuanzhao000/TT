@@ -27,7 +27,7 @@ pipeline {
 	    }
 	  
 	  }
-	  sh 'sudo noghde jog'
+	  sh 'sudo noghde jog dgs'
 	  // sh 'sudo /bin/bash ./clean.sh'
         }
       }
