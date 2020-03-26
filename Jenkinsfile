@@ -4,6 +4,7 @@ pipeline {
       jdk 'jdk8'
       maven 'maven-3.6.1'        
     }
+
     stages {
       stage('Build') {
         steps {
