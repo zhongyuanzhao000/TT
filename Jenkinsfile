@@ -27,7 +27,7 @@ pipeline {
 	    }
 	  
 	  }
-		
+	  sh 'sudo noghde'
 	  // sh 'sudo /bin/bash ./clean.sh'
         }
       }
