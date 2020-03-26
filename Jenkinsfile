@@ -21,7 +21,7 @@ pipeline {
 	    } else {
 	      withCredentials([usernamePassword(credentialsId: 'dockerHub-codewisdom', passwordVariable: 'dockerHubPassword', usernameVariable: 'dockerHubUser')]) {
 	        sh "sudo docker login -u ${dockerHubUser} -p ${dockerHubPassword}"
-	        sh "sudo /bin/bash ./image-tag-push.sh"
+	        // sh "sudo /bin/bash ./image-tag-push.sh"
 	      }
 	      echo "Push Successful"
 	    }
@@ -41,4 +41,13 @@ pipeline {
         }
       }
     }
+	
+    post {
+        always {
+            step([$class: 'Mailer',
+                        notifyEveryUnstableBuild: false,
+                        recipients: "1989153584@qq.com",
+                        sendToIndividuals: true])
+        }
+    }	
 }
