@@ -28,7 +28,7 @@ pipeline {
 	  
 	  }
 		
-	  sh 'sudo /bin/bash ./clean.sh'
+	  // sh 'sudo /bin/bash ./clean.sh'
         }
       }
       stage('Test') {
