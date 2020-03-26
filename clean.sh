@@ -81,3 +81,5 @@ sudo docker rmi ts/ts-admin-user-service:latest
 sudo docker rmi ts/ts-news-service:latest
 sudo docker rmi ts/ts-ticket-office-service:latest
 sudo docker rmi ts/ts-voucher-service:latest
+
+sudo docker image prune
