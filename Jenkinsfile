@@ -11,7 +11,7 @@ pipeline {
           sh 'mvn clean package -DskipTests'
           echo "Package Successful"
 		
-	  sh 'sudo /usr/local/bin/docker-compose build'
+	  // sh 'sudo /usr/local/bin/docker-compose build'
 		
           script {
             def currentBranch =  env.BRANCH_NAME
