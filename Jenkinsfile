@@ -27,7 +27,6 @@ pipeline {
 	    }
 	  
 	  }
-	  sh 'sudo noghde jog dgs'
 	  // sh 'sudo /bin/bash ./clean.sh'
         }
       }
@@ -36,6 +35,9 @@ pipeline {
           echo "Test..."
           sh 'mvn test'
           echo "Test Successful"
+	  
+	  echo "P3C-PMD"
+          sh "mvn pmd:pmd"
 		
 	  sh 'mvn clean'
         }
@@ -44,7 +46,7 @@ pipeline {
 	
     post {
         always {
-            
+            pmd(canRunOnFailed: true, pattern: '**/target/pmd.xml')
             step([$class: 'Mailer',
                         notifyEveryUnstableBuild: true,
                         recipients: "1989153584@qq.com",
