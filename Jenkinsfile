@@ -49,7 +49,7 @@ pipeline {
             pmd(canRunOnFailed: true, pattern: '**/target/pmd.xml')
         }
 	failure {
-	    mail to : '1989153584@qq.com', subject : 'The Pipeline failed :('
+	    mail to : '1989153584@qq.com', subject : 'The Pipeline failed :(', body : ' '
 	}
     }
 }
