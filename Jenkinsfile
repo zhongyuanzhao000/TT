@@ -40,7 +40,7 @@ pipeline {
 	  echo "P3C-PMD"
           sh "mvn pmd:pmd"
 		
-	  sh 'mvn clean'
+	  // sh 'mvn clean'
         }
       }
     }
