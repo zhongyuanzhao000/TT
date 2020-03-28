@@ -49,7 +49,7 @@ pipeline {
 		changeBuildStatus: true,
 		minimumMethodCoverage:'30',maximumMethodCoverage:'70',
 		minimumClassCoverage:'30',maximumClassCoverage:'70'
-		// 还有很多配置，可以查看参考书籍
+		
 	  )
 		
 	  // sh 'mvn clean'
@@ -60,7 +60,7 @@ pipeline {
     post {
         always {
             pmd(canRunOnFailed: true, pattern: '**/target/pmd.xml')
-	    junit testResults: "**/target/surefire-reports/*.xml"
+	    // junit testResults: "**/target/surefire-reports/*.xml"
         }
 	failure {
 	    mail subject : 'The Pipeline failed :(', body : 'failure body', from : 'jenkinsx@163.com', to : '1989153584@qq.com'
