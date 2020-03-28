@@ -8,7 +8,7 @@ pipeline {
       stage('Build') {
         steps {
           echo "Build..."
-          sh 'mvn clean package -DskipTests'
+          // sh 'mvn clean package -DskipTests'
           echo "Package Successful"
 		
 	  // sh 'sudo /usr/local/bin/docker-compose build'
@@ -49,7 +49,7 @@ pipeline {
             pmd(canRunOnFailed: true, pattern: '**/target/pmd.xml')
         }
 	failure {
-	    mail to : '1989153584@qq.com', subject : 'The Pipeline failed :(', body : ' '
+	    mail subject : 'The Pipeline failed :(', body : 'The Pipeline failed :(', to : '1989153584@qq.com'
 	}
     }
 }
