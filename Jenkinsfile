@@ -9,7 +9,8 @@ pipeline {
       stage('Build') {
         steps {
           echo "Build..."
-          sh 'mvn clean install -Dmaven.test.skip=true  -Dpmd.skip=true'
+          // sh 'mvn clean install -Dmaven.test.skip=true  -Dpmd.skip=true'
+	  sh 'mvn clean package -Dmaven.test.skip=true'
           echo "Package Successful"
 		
 	  // sh 'sudo /usr/local/bin/docker-compose build'
