@@ -12,15 +12,7 @@ pipeline {
           // sh 'mvn clean install -Dmaven.test.skip=true  -Dpmd.skip=true'
 	  sh 'mvn clean package -Dmaven.test.skip=true'
           echo "Package Successful"
-	  jacoco(
-		execPattern: 'target/jacoco.exec',
-		classPattern: 'target/classes',
-		sourcePattern: 'src/main/java',
-		changeBuildStatus: true,
-		minimumMethodCoverage:'30',maximumMethodCoverage:'70',
-		minimumClassCoverage:'30',maximumClassCoverage:'70'
-		// 还有很多配置，可以查看参考书籍
-	  )
+	  
 		
 	  // sh 'sudo /usr/local/bin/docker-compose build'
 		
@@ -49,6 +41,16 @@ pipeline {
 	  
 	  echo "P3C-PMD"
           sh "mvn pmd:pmd"
+	
+	  jacoco(
+		execPattern: 'target/jacoco.exec',
+		classPattern: 'target/classes',
+		sourcePattern: 'src/main/java',
+		changeBuildStatus: true,
+		minimumMethodCoverage:'30',maximumMethodCoverage:'70',
+		minimumClassCoverage:'30',maximumClassCoverage:'70'
+		// 还有很多配置，可以查看参考书籍
+	  )
 		
 	  // sh 'mvn clean'
         }
