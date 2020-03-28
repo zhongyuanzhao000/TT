@@ -35,7 +35,7 @@ pipeline {
       stage('Test') {
         steps {
           echo "Test..."
-          //sh 'mvn test'
+          sh 'mvn test'
           echo "Test Successful"
 	  
 	  echo "P3C-PMD"
@@ -49,6 +49,7 @@ pipeline {
     post {
         always {
             pmd(canRunOnFailed: true, pattern: '**/target/pmd.xml')
+	    junit testResults: "**/target/surefire-reports/*.xml"
         }
 	failure {
 	    mail subject : 'The Pipeline failed :(', body : 'failure body', from : 'jenkinsx@163.com', to : '1989153584@qq.com'
