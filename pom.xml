@@ -140,7 +140,7 @@
 		    <ruleset>rulesets/java/ali-other.xml</ruleset>
 		    <ruleset>rulesets/java/ali-set.xml</ruleset>
 		</rulesets>
-		<printFailingErrors>false</printFailingErrors>
+		<printFailingErrors>true</printFailingErrors>
 	    </configuration>
 	    <executions>
 		<execution>
