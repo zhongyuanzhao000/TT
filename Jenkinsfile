@@ -12,24 +12,23 @@ pipeline {
           // sh 'mvn clean install -Dmaven.test.skip=true  -Dpmd.skip=true'
 	  sh 'mvn clean package -Dmaven.test.skip=true'
           echo "Package Successful"
+	  sh 'cogojbcu ncs'
 	  
-		
 	  // sh 'sudo /usr/local/bin/docker-compose build'
-		
-          script {
-            def currentBranch =  env.BRANCH_NAME
-	    if (currentBranch == 'master') {
-	      echo "This is master branch. Skip push step."
+          // script {
+            // def currentBranch =  env.BRANCH_NAME
+	    // if (currentBranch == 'master') {
+	      // echo "This is master branch. Skip push step."
 	    
-	    } else {
-	      withCredentials([usernamePassword(credentialsId: 'dockerHub-codewisdom', passwordVariable: 'dockerHubPassword', usernameVariable: 'dockerHubUser')]) {
-	        sh "sudo docker login -u ${dockerHubUser} -p ${dockerHubPassword}"
+	    // } else {
+	      // withCredentials([usernamePassword(credentialsId: 'dockerHub-codewisdom', passwordVariable: 'dockerHubPassword', usernameVariable: 'dockerHubUser')]) {
+	        // sh "sudo docker login -u ${dockerHubUser} -p ${dockerHubPassword}"
 	        // sh "sudo /bin/bash ./image-tag-push.sh"
-	      }
-	      echo "Push Successful"
-	    }
+	      // }
+	      // echo "Push Successful"
+	    // }
 	  
-	  }
+	  // }
 	  // sh 'sudo /bin/bash ./clean.sh'
         }
       }
@@ -37,7 +36,6 @@ pipeline {
         steps {
           echo "Test..."
           sh 'mvn test'
-          echo "Test Successful"
 	  
 	  echo "P3C-PMD"
           sh "mvn pmd:pmd"
