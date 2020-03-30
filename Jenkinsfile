@@ -65,8 +65,8 @@ pipeline {
 	failure {
 	    mail from : 'jenkinsx@163.com', 
 		 to : '1989153584@qq.com',
-	         subject : 'Failed Pipeline: ${currentBuild.fullDisplayName} :(', 
-	         body : 'Something is wrong with ${env.BUILD_URL}'
+	         subject : "Failed Pipeline: ${currentBuild.fullDisplayName} :(", 
+	         body : "Something is wrong with ${env.BUILD_URL}"
 	}
     }
 }
