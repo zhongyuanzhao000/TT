@@ -63,7 +63,10 @@ pipeline {
 	    // junit testResults: "**/target/surefire-reports/*.xml"
         }
 	failure {
-	    mail subject : 'The Pipeline failed :(', body : 'failure body', from : 'jenkinsx@163.com', to : '1989153584@qq.com'
+	    mail from : 'jenkinsx@163.com', 
+		 to : '1989153584@qq.com',
+	         subject : 'Failed Pipeline: ${currentBuild.fullDisplayName} :(', 
+	         body : 'Something is wrong with ${env.BUILD_URL}'
 	}
     }
 }
